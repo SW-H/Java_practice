@@ -12,10 +12,15 @@ public class MyDate {
 		this.year = year;
 	}
 
-	public boolean checkLeap(int year) {
-		if ((year % 4 == 0) && (year % 100 != 0))
-			return true; // 윤년
-		if ((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0))
+	public boolean isLeapYear(int year) {
+		/*
+		 * 윤년 계산법
+		 * 1. 4로 나누어 떨어진다 = 윤년
+		 * 		단, 100으로도 나누어 떨어진다 = 평년
+		 * 2. 4로 나누어 떨어지고, 100으로도 나누어 떨어지나, 400으로 나누어 떨어진다 = 윤년
+		 *  
+		 */
+		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
 			return true;
 		return false;
 	}
@@ -23,7 +28,7 @@ public class MyDate {
 	public String isValid() {
 		if (!(1 <= date && date <= 31) || !(1 <= month && month <= 12))
 			return "유효하지 않은 날짜입니다";
-		if ((month == 2) && (checkLeap(year) == true))
+		if ((month == 2) && (isLeapYear(year) == true))
 			dateRange[month]++;
 		if (date > dateRange[month])
 			return "유효하지 않은 날짜입니다";
