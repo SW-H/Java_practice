@@ -6,5 +6,7 @@ public class MyDateTest {
 		System.out.println(date1.isValid());
 		MyDate date2 = new MyDate(2, 10, 2006);
 		System.out.println(date2.isValid());
+		MyDate date3 = new MyDate(31, 1, 2021);
+		System.out.println(date3.isValid());
 	}
 }
